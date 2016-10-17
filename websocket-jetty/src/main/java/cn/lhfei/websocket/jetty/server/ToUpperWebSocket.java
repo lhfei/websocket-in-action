@@ -33,7 +33,9 @@ import org.eclipse.jetty.websocket.api.annotations.WebSocket;
  */
 @WebSocket
 public class ToUpperWebSocket {
-
+	private Session session;
+	private long index = 1l;
+	
 	@OnWebSocketMessage
 	public void onText(Session session, String message) throws IOException {
 		System.out.println("Message received:" + message);
@@ -45,12 +47,40 @@ public class ToUpperWebSocket {
 
 	@OnWebSocketConnect
 	public void onConnect(Session session) throws IOException {
+		this.session = session;
 		System.out.println(session.getRemoteAddress().getHostString() + " connected!");
+		
+		/*try {
+			while(true){
+				session.getRemote().sendString("==" +index+ "==: Hefei Li");
+				
+				Thread.sleep(2000l);
+				
+				index++;
+			}
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
+	}
+	
+	public void pushMessage(String message) {
+		if(null != session && session.isOpen()){
+			try {
+				session.getRemote().sendString(message);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@OnWebSocketClose
 	public void onClose(Session session, int status, String reason) {
 		System.out.println(session.getRemoteAddress().getHostString() + " closed!");
+		try {
+			this.session.disconnect();
+		} catch (IOException e) {
+		}
 	}
 
 }

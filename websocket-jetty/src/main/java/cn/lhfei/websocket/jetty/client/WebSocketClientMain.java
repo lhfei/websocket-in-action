@@ -31,7 +31,7 @@ import org.eclipse.jetty.websocket.client.WebSocketClient;
 public class WebSocketClientMain {
 
 	public static void main(String[] args) {
-		String dest = "ws://localhost:8080/jsr356toUpper";
+		String dest = "ws://localhost:8080/toUpper";
 		WebSocketClient client = new WebSocketClient();
 		try {
 			

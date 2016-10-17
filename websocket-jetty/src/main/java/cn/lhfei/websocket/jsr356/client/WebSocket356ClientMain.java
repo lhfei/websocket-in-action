@@ -42,8 +42,8 @@ public class WebSocket356ClientMain {
 			container.connectToServer(socket, new URI(dest));
 
 			socket.getLatch().await();
-			socket.sendMessage("echo356");
-			socket.sendMessage("test356");
+			socket.sendMessage("lhfei--echo356");
+			socket.sendMessage("lhfei--test356");
 			Thread.sleep(10000l);
 
 		} catch (Throwable t) {
