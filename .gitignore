@@ -4,6 +4,7 @@
 .classpath
 .project
 /.settings/*
+/websocket-*/.settings/*
 
 
 # Mobile Tools for Java (J2ME)

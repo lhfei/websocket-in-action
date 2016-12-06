@@ -52,7 +52,7 @@ public class SampleTomcatWebSocketApplication extends SpringBootServletInitializ
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(echoWebSocketHandler(), "/echo").withSockJS();
+		registry.addHandler(echoWebSocketHandler(), "/ws").withSockJS();
 		registry.addHandler(snakeWebSocketHandler(), "/snake").withSockJS();
 	}
 
